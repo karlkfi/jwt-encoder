@@ -16,7 +16,7 @@ def cli(uid, private_key_path, duration, algorithm):
     uid -- Unique ID of the user.
     private_key_path -- File path of the auth token secret.
     """
-    expTime = time.time() + (3600 * duration)
+    expTime = time.time() + duration
     private_key = private_key_path.read()
     token = jwt.encode({'exp': expTime, 'uid': uid}, private_key, algorithm=algorithm)
     click.echo(token)
